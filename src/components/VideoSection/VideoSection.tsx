@@ -1,9 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 
-import {
-	VideoSection as CoreVideoSection,
-	VideoSectionRef as CoreVideoSectionRef,
-} from '@core/components/VideoSection'
+import { VideoSection as CoreVideoSection, VideoSectionRef as CoreVideoSectionRef } from '@core/components/VideoSection'
 import { useFile, useUser } from '@src/hooks'
 import { Video } from '@core/model'
 import { TitlePart } from '@src/navigator/screens'

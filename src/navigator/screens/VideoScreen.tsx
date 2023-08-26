@@ -1,13 +1,14 @@
-import { VStack } from 'native-base'
-import { StackParamList } from './type'
+import CommentList from '@components/CommentList'
+import { AvatarPart, Buttons, Title, VideoPart } from '@components/VideoScreenComponents'
+import { CommentsSection } from '@core/components'
+import { VideoRef } from '@core/components/Video/Video'
+import database from '@react-native-firebase/database'
+import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import useVideoInfo from '@src/hooks/useVideoInfo'
+import { VStack } from 'native-base'
 import { useCallback, useRef } from 'react'
-import { useFocusEffect } from '@react-navigation/native'
-import { VideoRef } from '@core/components/Video/Video'
-import { AvatarPart, Buttons, Title } from '@components/VideoScreenComponents'
-import { VideoPart } from '@components/VideoScreenComponents/VideoPart'
-import database from '@react-native-firebase/database'
+import { StackParamList } from './type'
 
 export default (
 	props: NativeStackScreenProps<StackParamList, 'VideoScreen'>
@@ -48,6 +49,9 @@ export default (
 			/>
 			<Buttons data={data} />
 			<AvatarPart userId={data?.userId} />
+			<CommentsSection>
+				<CommentList videoId={data?.id} />
+			</CommentsSection>
 		</VStack>
 	)
 }

@@ -3,7 +3,7 @@ import { Pressable } from 'react-native'
 import { AvatarSection } from './AvatarSection'
 import { useUser } from '@src/hooks'
 
-export function AvatarPart(props: { userId?: string }) {
+export default function AvatarPart(props: { userId?: string }) {
 	const user = useUser(props.userId)
 	return (
 		<HStack

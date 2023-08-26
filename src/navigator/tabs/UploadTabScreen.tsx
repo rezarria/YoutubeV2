@@ -1,10 +1,7 @@
 import { Box, Button, Input, ScrollView, Text, VStack } from 'native-base'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
-import {
-	DocumentPickerResponse,
-	pickSingle,
-} from 'react-native-document-picker'
+import { DocumentPickerResponse, pickSingle } from 'react-native-document-picker'
 import { upload } from '@core/utils/upload'
 
 export default function UploadTabScreen() {

@@ -1,4 +1,4 @@
-import { HStack, VStack, Text, Pressable } from 'native-base'
+import { HStack, Pressable, Text, VStack } from 'native-base'
 import Avatar from './Avatar'
 import More from './More'
 import { GestureResponderEvent } from 'react-native'

@@ -1,4 +1,6 @@
-export type Like = {
+type Like = {
 	userId?: string
 	time?: number
 }
+
+export default Like

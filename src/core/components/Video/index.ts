@@ -1,2 +1,3 @@
-import Video from './Video'
-export { Video }
+import Video, { VideoRef } from './Video'
+
+export { Video, type VideoRef }

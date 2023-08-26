@@ -1,6 +1,6 @@
 import { Avatar, Image } from 'native-base'
 
-export function AvatarSection(props: { avatar?: string }) {
+export default function AvatarSection(props: { avatar?: string }) {
 	return (
 		<Avatar
 			height={'36px'}

@@ -1,4 +1,4 @@
-import { SkSVG, Skia } from '@shopify/react-native-skia'
+import { Skia, SkSVG } from '@shopify/react-native-skia'
 import { useEffect, useState } from 'react'
 import * as fs from 'react-native-fs'
 

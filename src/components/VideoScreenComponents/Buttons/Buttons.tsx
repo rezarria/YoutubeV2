@@ -1,12 +1,11 @@
-import { HStack, Text, VStack } from 'native-base'
+import { HStack, Pressable, Text, VStack } from 'native-base'
 import { Video as VideoModel } from '@core/model'
 import Svg, { Path } from 'react-native-svg'
-import { Pressable } from 'react-native'
 import Share from '@assets/svg/share.svg'
 import AddToList from '@assets/svg/addToList.svg'
 import LikeGroup from './LikeGroup'
 
-export function Buttons(props: { data?: VideoModel }) {
+export default function Buttons(props: { data?: VideoModel }) {
 	return (
 		<HStack
 			borderColor={'#cecece'}

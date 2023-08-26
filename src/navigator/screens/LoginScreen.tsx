@@ -3,7 +3,6 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin'
 import auth from '@react-native-firebase/auth'
 import ifUserNotFoundThenCreate from '@src/task/ifUserNotFoundThenCreate'
 import { StackParamList } from './type'
-import {} from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export default function LoginScreen(

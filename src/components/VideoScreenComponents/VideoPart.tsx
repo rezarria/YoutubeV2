@@ -1,9 +1,8 @@
 import { forwardRef } from 'react'
-import { VideoRef } from '@core/components/Video/Video'
-import { Video } from '@core/components/Video'
+import { Video, VideoRef } from '@core/components/Video'
 import { useFile } from '@src/hooks'
 
-export const VideoPart = forwardRef<
+const VideoPart = forwardRef<
 	VideoRef,
 	{ videoUri?: string; onEnd?: () => void }
 >(function VideoPart(props, ref) {
@@ -22,3 +21,5 @@ export const VideoPart = forwardRef<
 		</>
 	)
 })
+
+export default VideoPart
