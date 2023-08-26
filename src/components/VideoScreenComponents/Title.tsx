@@ -1,10 +1,11 @@
 import { HStack, Text, VStack } from 'native-base'
 import MoreButton from './MoreButton'
+import ViewsCount from './ViewsCount'
 
 export default function Title(props: {
 	title?: string
 	like?: number
-	views?: number
+	videoId?: string
 	time?: number
 }) {
 	return (
@@ -24,7 +25,8 @@ export default function Title(props: {
 					{props.title}
 				</Text>
 				<Text>
-					{`${props.views} views - Premiered ${new Date(
+					<ViewsCount videoid={props.videoId} />
+					{` views - Premiered ${new Date(
 						props.time ?? 0
 					).toLocaleDateString()}`}
 				</Text>

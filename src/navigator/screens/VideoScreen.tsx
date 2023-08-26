@@ -42,7 +42,7 @@ export default (
 			/>
 			<Title
 				title={data?.name}
-				views={data?.views}
+				videoId={data?.id}
 				like={data?.like}
 				time={data?.time}
 			/>

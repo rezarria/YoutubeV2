@@ -13,6 +13,7 @@ import { TabParamLists } from '@src/navigator/tabs/type'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { StackParamList } from '@src/navigator/screens/type'
 import { GestureResponderEvent } from 'react-native'
+import useGetViewsNow from '@src/hooks/useGetViewsNow'
 
 export type VideoSectionProps = {
 	data?: Video
@@ -28,6 +29,7 @@ function VideoSection(
 	const thumbnailUri = useFile(data?.thumbnailUri)
 	const userInfo = useUser(data?.userId)
 	const avatarUri = userInfo?.avatar
+	const views = useGetViewsNow(data?.id)
 	const navigation =
 		useNavigation<
 			CompositeNavigationProp<
@@ -41,14 +43,13 @@ function VideoSection(
 			videoUri={videoUri}
 			thumbnailUri={thumbnailUri}
 			avatarUri={avatarUri}
-			views={data?.views}
 			time={data?.time}
 		>
 			<TitlePart
 				avatarUri={avatarUri}
 				time={data?.time}
 				title={data?.name}
-				views={data?.views}
+				views={views}
 				onPress={handlePress(navigation, data)}
 			/>
 		</CoreVideoSection>

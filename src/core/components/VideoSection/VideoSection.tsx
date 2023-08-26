@@ -17,7 +17,6 @@ export type VideoProps = {
 	time?: number
 	thumbnailUri?: string
 	avatarUri?: string
-	views?: number
 	children?: ReactNode
 }
 
