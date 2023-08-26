@@ -3,27 +3,28 @@ import database, {
 } from '@react-native-firebase/database'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-export default function useObserverLike(
+export default function useObserverDislike(
 	videoId?: string
 ): [number?, FirebaseDatabaseTypes.Query?] {
-	const [like, setLike] = useState(0)
+	const [dislike, setDislike] = useState(0)
 	const ref = useMemo(
 		() =>
 			videoId
-				? database().ref(`like/${videoId}`).orderByChild('type').equalTo(1)
+				? database().ref(`like/${videoId}`).orderByChild('type').equalTo(0)
 				: undefined,
 		[videoId]
 	)
 	const first = useRef(true)
 	useEffect(() => {
 		if (ref) {
-			console.debug(`theo dõi việc tăng của like của video ${videoId}`)
+			console.debug(`theo dõi việc giảm của like của video ${videoId}`)
 			const handleAdd = ref.on('child_added', () => {
-				console.log('+l')
-				setLike(i => i + 1)
+				console.log('+d')
+				setDislike(i => i + 1)
 			})
 			const handleRemove = ref.on('child_removed', () => {
-				setLike(i => i - 1)
+				console.log('-d')
+				setDislike(i => i - 1)
 			})
 			if (first.current) {
 				ref.once('value')
@@ -36,5 +37,5 @@ export default function useObserverLike(
 			}
 		}
 	}, [ref, videoId])
-	return [like, ref]
+	return [dislike, ref]
 }

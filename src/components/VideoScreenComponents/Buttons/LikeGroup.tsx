@@ -10,13 +10,33 @@ export default function LikeGroup(props: { data?: VideoModel }) {
 	const [dislike, dislikeRef] = useObserverDislike(props.data?.id)
 	const user = auth().currentUser
 	const handleLike = useCallback(() => {
-		if (user && likeRef?.orderByKey().equalTo(user.uid)) {
-			likeRef?.push(user.uid)
+		if (user) {
+			likeRef?.ref.child(user.uid).once('value', snapshot => {
+				if (snapshot.exists()) {
+					if (snapshot.val().type !== 1) {
+						snapshot.ref.update({ type: 1 })
+					} else {
+						snapshot.ref.remove()
+					}
+				} else {
+					snapshot.ref.set({ type: 1, time: Date.now() })
+				}
+			})
 		}
 	}, [likeRef, user])
 	const handleDislike = useCallback(() => {
 		if (user) {
-			dislikeRef?.push(user.uid)
+			dislikeRef?.ref.child(user.uid).once('value', snapshot => {
+				if (snapshot.exists()) {
+					if (snapshot.val().type !== 0) {
+						snapshot.ref.update({ type: 0 })
+					} else {
+						snapshot.ref.remove()
+					}
+				} else {
+					snapshot.ref.set({ type: 0, time: Date.now() })
+				}
+			})
 		}
 	}, [dislikeRef, user])
 	return (
