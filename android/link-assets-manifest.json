@@ -1,0 +1,93 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/Roboto/Roboto-Black.ttf",
+      "sha1": "3f8e401d808f6ce84b542266726514ac8be73171"
+    },
+    {
+      "path": "assets/Roboto/Roboto-BlackItalic.ttf",
+      "sha1": "03d6e3747d862385dbe48e8296385b9236101a62"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "assets/Roboto/Roboto-BoldItalic.ttf",
+      "sha1": "2f10ad9e8cab0880182705c4e0fbaeabae706e64"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Italic.ttf",
+      "sha1": "65f3f6a7e1bd2fa6f2df35e4b07775d7f1dde4f0"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Light.ttf",
+      "sha1": "18788c5d630fa695f9283f6393bfa541b2031508"
+    },
+    {
+      "path": "assets/Roboto/Roboto-LightItalic.ttf",
+      "sha1": "6e01f9df9449565697032b002706a94b51862bbe"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "assets/Roboto/Roboto-MediumItalic.ttf",
+      "sha1": "b3aa2d8f16d5a331fdced82f213a052b204eaca0"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    },
+    {
+      "path": "assets/Roboto/Roboto-Thin.ttf",
+      "sha1": "58c733e22bceeaf9609ce578eca92ac303c6d92f"
+    },
+    {
+      "path": "assets/Roboto/Roboto-ThinItalic.ttf",
+      "sha1": "cc79d5a23bd0ec08b1d99f5390bf33cacc3082f4"
+    },
+    {
+      "path": "assets/img/youtube.png",
+      "sha1": "4d89a00a7848f66e9291878806f3c838dcee4b1a"
+    },
+    {
+      "path": "assets/svg/addToList.svg",
+      "sha1": "34e8525e0d53f0cb1f22e83fc09d1b96d41cc098"
+    },
+    {
+      "path": "assets/svg/chromecast.svg",
+      "sha1": "8f7d41f92276f6e46b9e092affd9a6d0a36451f6"
+    },
+    {
+      "path": "assets/svg/compass.svg",
+      "sha1": "ff6bfa188d9982f5c3e7a8e89822eb2f3a2bf1c5"
+    },
+    {
+      "path": "assets/svg/more.svg",
+      "sha1": "8950b06bf6f79bfc51899097e4b0c1dc99a4402d"
+    },
+    {
+      "path": "assets/svg/none.svg",
+      "sha1": "4be3c2377dafb505de779a7222e2d0625808bf3e"
+    },
+    {
+      "path": "assets/svg/notification.svg",
+      "sha1": "8170e1e06f2dac9c56c51f561084d39988ada97f"
+    },
+    {
+      "path": "assets/svg/search.svg",
+      "sha1": "379c5e5781a6b04027c033b1dde95d326df3a995"
+    },
+    {
+      "path": "assets/svg/share.svg",
+      "sha1": "c106dc2413ec58d1ae76f7b502c160ebe5325a11"
+    },
+    {
+      "path": "assets/svg/youtube.svg",
+      "sha1": "15c712a01d90614f5b8f04a31e262d5acb5db50e"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "173561227608",
+    "firebase_url": "https://ytbe-33b73-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ytbe-33b73",
+    "storage_bucket": "ytbe-33b73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173561227608:android:356b7fb3b451c7d9ba1d2d",
+        "android_client_info": {
+          "package_name": "com.youtubev2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "173561227608-i2r18qak3t18hd516nsg354ua5qa7rrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.youtubev2",
+            "certificate_hash": "e262951cc7d097e0822e7cb2b72a1f97da7e37cc"
+          }
+        },
+        {
+          "client_id": "173561227608-vha0jtdn25oq9eh4ot37scnl4jug3rs5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDciOfv3lerWdyAlp3TTPWuyEKnziCaNUk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "173561227608-vha0jtdn25oq9eh4ot37scnl4jug3rs5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

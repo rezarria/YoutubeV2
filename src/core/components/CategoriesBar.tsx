@@ -1,0 +1,76 @@
+import Button from './Buttons/Button'
+import { Box, HStack, ScrollView, VStack } from 'native-base'
+
+const CategoriesBar = () => (
+	<Box
+		backgroundColor={'#fff'}
+		paddingTop={'0px'}
+		paddingBottom={'10px'}
+		paddingX={'12px'}
+	>
+		<Box
+			backgroundColor={'#CECECE'}
+			height={'0.5px'}
+			marginBottom={'12px'}
+		/>
+		<VStack
+			justifyContent={'flex-start'}
+			flexDirection={'row'}
+		>
+			<Button
+				title={'Explore'}
+				icon={'custom/compass.svg'}
+			/>
+			<Box
+				marginX={'14px'}
+				width={'1px'}
+				backgroundColor={'#CECECE'}
+			/>
+			<ScrollView
+				horizontal={true}
+				showsVerticalScrollIndicator={false}
+			>
+				<HStack
+					space={'4px'}
+					justifyContent={'space-between'}
+					flexDirection={'row'}
+				>
+					<Button
+						title={'All'}
+						main={true}
+					/>
+					<Button
+						title={'Mixes'}
+						border={true}
+					/>
+					<Button
+						title={'Music'}
+						border={true}
+					/>
+					<Button
+						title={'Graphic'}
+						border={true}
+					/>
+					<Button
+						title={'Graphic'}
+						border={true}
+					/>
+					<Button
+						title={'Graphic'}
+						border={true}
+					/>
+					<Button
+						title={'Graphic'}
+						border={true}
+					/>
+					<Button
+						title={'Graphic'}
+						border={true}
+					/>
+				</HStack>
+			</ScrollView>
+		</VStack>
+	</Box>
+)
+
+export default CategoriesBar
