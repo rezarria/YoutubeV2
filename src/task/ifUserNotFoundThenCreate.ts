@@ -8,17 +8,16 @@ export default function (user: FirebaseAuthTypes.User) {
 		.equalTo(user.uid)
 		.once('value', snapshot => {
 			if (!snapshot.exists()) {
-				console.warn('cần tạo user')
+				console.debug(`tạo user ${user.uid}`)
 				userRecords.update(
 					{
 						[user.uid]: {
 							avatar: user.photoURL,
 							name: user.displayName,
-							a: user.updateEmail,
 						},
 					},
 					() => {
-						console.log('tạo xong user')
+						console.debug('tạo xong user')
 					}
 				)
 			}

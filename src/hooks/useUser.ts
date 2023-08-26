@@ -5,6 +5,7 @@ import { User } from '@core/model'
 export default function useUser(userId?: string) {
 	const [user, setUser] = useState<User>()
 	useEffect(() => {
+		console.debug(`truy vấn thông tin về user ${userId}`)
 		database()
 			.ref(`user/${userId}`)
 			.once('value')
