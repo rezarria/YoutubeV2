@@ -1,4 +1,6 @@
-import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
+import database, {
+	FirebaseDatabaseTypes,
+} from '@react-native-firebase/database'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
 export default function useObserverLike(

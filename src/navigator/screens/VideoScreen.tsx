@@ -1,5 +1,10 @@
 import CommentList from '@components/CommentList'
-import { AvatarPart, Buttons, Title, VideoPart } from '@components/VideoScreenComponents'
+import {
+	AvatarPart,
+	Buttons,
+	Title,
+	VideoPart,
+} from '@components/VideoScreenComponents'
 import { CommentsSection } from '@core/components'
 import { VideoRef } from '@core/components/Video/Video'
 import database from '@react-native-firebase/database'

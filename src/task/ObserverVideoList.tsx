@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react'
-import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
+import database, {
+	FirebaseDatabaseTypes,
+} from '@react-native-firebase/database'
 import { useAppDispatch } from '@core/hooks'
 import { add, remove, update } from '@core/store/reducer/videosReducer'
 import { Video } from '@core/model'
