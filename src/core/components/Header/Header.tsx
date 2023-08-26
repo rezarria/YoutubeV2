@@ -2,7 +2,7 @@ import Avatar from './Avatar'
 import Section from './Section'
 import { Box, HStack, Image } from 'native-base'
 import auth from '@react-native-firebase/auth'
-import { useUser } from '@components/VideoSection/hook'
+import { useUser } from '@src/hooks'
 
 export default function Header() {
 	const user = useUser(auth().currentUser?.uid)
