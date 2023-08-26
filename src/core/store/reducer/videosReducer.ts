@@ -11,13 +11,13 @@ const videosSilce = createSlice({
 		remove: (state, action: PayloadAction<string>) => {
 			state.data = state.data
 				.filter(i => i.id !== action.payload)
-				.sort((a, b) => (a?.time ?? 0) - (b?.time ?? 0))
+				.sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
 		},
 		update: (state, action: PayloadAction<{ id: string; video: Video }>) => {
 			state.data = state.data
 				.filter(i => i.id !== action.payload.id)
 				.concat({ ...action.payload.video, id: action.payload.id })
-				.sort((a, b) => (a?.time ?? 0) - (b?.time ?? 0))
+				.sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
 		},
 		add: (state, action: PayloadAction<{ id: string; video: Video }[]>) => {
 			state.data = state.data
@@ -26,7 +26,7 @@ const videosSilce = createSlice({
 						.filter(i => !state.data.map(g => g.id).includes(i.id))
 						.map(i => ({ ...i.video, id: i.id }))
 				)
-				.sort((a, b) => (a?.time ?? 0) - (b?.time ?? 0))
+				.sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
 		},
 	},
 })

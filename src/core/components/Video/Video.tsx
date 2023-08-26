@@ -7,6 +7,7 @@ export type VideoProps = {
 	size?: { width: number; height: number }
 	uri?: string
 	thumbnailUri?: string
+	onEnd?: () => void
 }
 
 const NBRNVideo = Factory(RNVideo)
@@ -60,6 +61,7 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 								timeStyle(e.seekableDuration - e.currentTime)
 							)
 						}}
+						onEnd={props.onEnd}
 					/>
 					<VideoTime ref={videoTimeRef} />
 				</Box>

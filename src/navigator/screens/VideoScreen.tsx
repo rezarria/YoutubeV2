@@ -7,6 +7,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import { VideoRef } from '@core/components/Video/Video'
 import { AvatarPart, Buttons, Title } from '@components/VideoScreenComponents'
 import { VideoPart } from '@components/VideoScreenComponents/VideoPart'
+import database from '@react-native-firebase/database'
 
 export default (
 	props: NativeStackScreenProps<StackParamList, 'VideoScreen'>
@@ -21,11 +22,23 @@ export default (
 			}
 		}, [])
 	)
+	const handleEnd = useCallback(() => {
+		if (data?.id) {
+			database()
+				.ref('views')
+				.update({
+					[data.id]: {
+						time: Date.now(),
+					},
+				})
+		}
+	}, [data?.id])
 	return (
 		<VStack flex={1}>
 			<VideoPart
 				ref={videoPartRef}
 				videoUri={data?.videoUri}
+				onEnd={handleEnd}
 			/>
 			<Title
 				title={data?.name}

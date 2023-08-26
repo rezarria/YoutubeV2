@@ -29,9 +29,6 @@ function insertDB(
 		time: Date.now(),
 		userId: auth().currentUser?.uid,
 		thumbnailUri: thumbnalResult?.metadata.fullPath,
-		views: 0,
-		like: 0,
-		unlike: 0,
 		videoUri: result.metadata.fullPath,
 		description,
 	}
