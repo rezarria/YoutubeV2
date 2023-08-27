@@ -42,9 +42,7 @@ export default function TitlePart(props: TitlePartProps) {
 							fontWeight={500}
 							color={'#0A0A0A'}
 						>
-							{new Date(props.time ?? 0)
-								.toLocaleDateString()
-								.replace('//', ' . ')}
+							{new Date(props.time ?? 0).toLocaleDateString().replace('//', ' . ')}
 						</Text>
 					</HStack>
 				</VStack>

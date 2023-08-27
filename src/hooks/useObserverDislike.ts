@@ -1,17 +1,10 @@
-import database, {
-	FirebaseDatabaseTypes,
-} from '@react-native-firebase/database'
+import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import { useEffect, useMemo, useRef, useState } from 'react'
 
-export default function useObserverDislike(
-	videoId?: string
-): [number?, FirebaseDatabaseTypes.Query?] {
+export default function useObserverDislike(videoId?: string): [number?, FirebaseDatabaseTypes.Query?] {
 	const [dislike, setDislike] = useState(0)
 	const ref = useMemo(
-		() =>
-			videoId
-				? database().ref(`like/${videoId}`).orderByChild('type').equalTo(0)
-				: undefined,
+		() => (videoId ? database().ref(`like/${videoId}`).orderByChild('type').equalTo(0) : undefined),
 		[videoId]
 	)
 	const first = useRef(true)

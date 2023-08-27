@@ -6,5 +6,6 @@ module.exports = {
 		'react/react-in-jsx-scope': 'off',
 		'jsx-quotes': ['error'],
 		'no-mixed-spaces-and-tabs': 'off',
+		'linebreak-style': ['error', 'unix'],
 	},
 }

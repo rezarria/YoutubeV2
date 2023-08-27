@@ -2,12 +2,7 @@ import { HStack, Text, VStack } from 'native-base'
 import MoreButton from './MoreButton'
 import ViewsCount from './ViewsCount'
 
-export default function Title(props: {
-	title?: string
-	like?: number
-	videoId?: string
-	time?: number
-}) {
+export default function Title(props: { title?: string; like?: number; videoId?: string; time?: number }) {
 	return (
 		<HStack
 			width={'100%'}
@@ -26,9 +21,7 @@ export default function Title(props: {
 				</Text>
 				<Text>
 					<ViewsCount videoid={props.videoId} />
-					{` views - Premiered ${new Date(
-						props.time ?? 0
-					).toLocaleDateString()}`}
+					{` views - Premiered ${new Date(props.time ?? 0).toLocaleDateString()}`}
 				</Text>
 			</VStack>
 			<MoreButton />

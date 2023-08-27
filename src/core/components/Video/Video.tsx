@@ -54,12 +54,8 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 						paused={pause}
 						flex={1}
 						onProgress={e => {
-							videoProgressRef.current?.set(
-								(e.currentTime / e.seekableDuration) * 100
-							)
-							videoTimeRef.current?.setText(
-								timeStyle(e.seekableDuration - e.currentTime)
-							)
+							videoProgressRef.current?.set((e.currentTime / e.seekableDuration) * 100)
+							videoTimeRef.current?.setText(timeStyle(e.seekableDuration - e.currentTime))
 						}}
 						onEnd={props.onEnd}
 					/>
@@ -116,10 +112,7 @@ type VideoProgressRef = {
 	set(v: number): void
 }
 
-const VideoProgress = forwardRef<VideoProgressRef>(function VideoProgress(
-	props,
-	ref
-) {
+const VideoProgress = forwardRef<VideoProgressRef>(function VideoProgress(props, ref) {
 	const [progress, setProgress] = useState(0)
 	useImperativeHandle(
 		ref,

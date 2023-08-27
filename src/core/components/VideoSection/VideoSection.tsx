@@ -1,11 +1,4 @@
-import {
-	ForwardedRef,
-	forwardRef,
-	ReactNode,
-	useImperativeHandle,
-	useRef,
-	useState,
-} from 'react'
+import { ForwardedRef, forwardRef, ReactNode, useImperativeHandle, useRef, useState } from 'react'
 import { Box } from 'native-base'
 import { NBVideo } from '@core/components/type'
 import Thumbnail, { ThumbnailRef } from './Thumbnail'

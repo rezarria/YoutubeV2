@@ -1,7 +1,5 @@
 import { useEffect, useRef } from 'react'
-import database, {
-	FirebaseDatabaseTypes,
-} from '@react-native-firebase/database'
+import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
 import { useAppDispatch } from '@core/hooks'
 import { add, remove, update } from '@core/store/reducer/videosReducer'
 import { Video } from '@core/model'
@@ -35,18 +33,14 @@ export default function ObserverVideoList() {
 					.orderByChild('time')
 					.limitToFirst(1)
 					.on('child_added', context => {
-						reduxDispatch(
-							add([{ id: context.key!, video: context.toJSON() as Video }])
-						)
+						reduxDispatch(add([{ id: context.key!, video: context.toJSON() as Video }]))
 					})
 				query.on('child_changed', context => {
 					if (context.key == null) {
 						throw new Error('no key')
 					}
 					console.info(`id: ${context.key} thay đổi`)
-					reduxDispatch(
-						update({ id: context.key, video: context.toJSON() as Video })
-					)
+					reduxDispatch(update({ id: context.key, video: context.toJSON() as Video }))
 				})
 				query.on('child_removed', context => {
 					if (context.key == null) {

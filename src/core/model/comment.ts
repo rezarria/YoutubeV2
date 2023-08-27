@@ -1,5 +1,5 @@
 type CommentType = {
-	id: string
+	id?: string
 	userId?: string
 	content?: string
 	time?: number

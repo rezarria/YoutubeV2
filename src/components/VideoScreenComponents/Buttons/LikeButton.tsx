@@ -2,13 +2,13 @@ import { Text, VStack } from 'native-base'
 import Svg, { Path } from 'react-native-svg'
 import { Pressable } from 'react-native'
 
-export default function LikeButton(props: {
-	value?: number
-	onPress?: () => void
-}) {
+export default function LikeButton(props: { value?: number; onPress?: () => void }) {
 	return (
 		<Pressable onPress={props.onPress}>
-			<VStack alignItems={'center'}>
+			<VStack
+				alignItems={'center'}
+				justifyContent={'space-between'}
+			>
 				<Svg
 					width={'25px'}
 					height={'24px'}

@@ -2,13 +2,9 @@ import { forwardRef } from 'react'
 import { Video, VideoRef } from '@core/components/Video'
 import { useFile } from '@src/hooks'
 
-const VideoPart = forwardRef<
-	VideoRef,
-	{ videoUri?: string; onEnd?: () => void }
->(function VideoPart(props, ref) {
+const VideoPart = forwardRef<VideoRef, { videoUri?: string; onEnd?: () => void }>(function VideoPart(props, ref) {
 	const videoUri =
-		useFile(props.videoUri) ??
-		'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+		useFile(props.videoUri) ?? 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 	return (
 		<>
 			{videoUri && (

@@ -1,10 +1,7 @@
 import { Box, Button, Input, ScrollView, Text, VStack } from 'native-base'
 import { useState } from 'react'
 import { TextInput } from 'react-native'
-import {
-	DocumentPickerResponse,
-	pickSingle,
-} from 'react-native-document-picker'
+import { DocumentPickerResponse, pickSingle } from 'react-native-document-picker'
 import { upload } from '@core/utils/upload'
 
 export default function UploadTabScreen() {
@@ -78,21 +75,12 @@ function UploadButton(props: {
 						name: props.name,
 						videoUri: props.file.uri,
 						thumbnailUri: props.picture?.uri,
-						description:
-							props.description.length === 0 ? undefined : props.description,
+						description: props.description.length === 0 ? undefined : props.description,
 						onVideoProgress: info => {
-							console.info(
-								`video tải lên ${
-									(100 * info.bytesTransferred) / info.totalBytes
-								} %`
-							)
+							console.info(`video tải lên ${(100 * info.bytesTransferred) / info.totalBytes} %`)
 						},
 						onThumbnailProgress: info => {
-							console.info(
-								`thumbnail tải lên ${
-									(100 * info.bytesTransferred) / info.totalBytes
-								} %`
-							)
+							console.info(`thumbnail tải lên ${(100 * info.bytesTransferred) / info.totalBytes} %`)
 						},
 					})
 				}
@@ -107,11 +95,7 @@ const SelectVideoButton = createSelectFileButton('Chọn video', 'video/mp4')
 const SelectThumnalButton = createSelectFileButton('Chọn thumbnail', 'image/*')
 
 function createSelectFileButton(title: string, type: string) {
-	return (props: {
-		setFile: React.Dispatch<
-			React.SetStateAction<DocumentPickerResponse | undefined>
-		>
-	}) => {
+	return (props: { setFile: React.Dispatch<React.SetStateAction<DocumentPickerResponse | undefined>> }) => {
 		return (
 			<Button
 				backgroundColor={'red.500'}

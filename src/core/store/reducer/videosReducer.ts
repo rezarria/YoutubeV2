@@ -9,9 +9,7 @@ const videosSilce = createSlice({
 	initialState: VideosInit,
 	reducers: {
 		remove: (state, action: PayloadAction<string>) => {
-			state.data = state.data
-				.filter(i => i.id !== action.payload)
-				.sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
+			state.data = state.data.filter(i => i.id !== action.payload).sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
 		},
 		update: (state, action: PayloadAction<{ id: string; video: Video }>) => {
 			state.data = state.data
@@ -22,9 +20,7 @@ const videosSilce = createSlice({
 		add: (state, action: PayloadAction<{ id: string; video: Video }[]>) => {
 			state.data = state.data
 				.concat(
-					action.payload
-						.filter(i => !state.data.map(g => g.id).includes(i.id))
-						.map(i => ({ ...i.video, id: i.id }))
+					action.payload.filter(i => !state.data.map(g => g.id).includes(i.id)).map(i => ({ ...i.video, id: i.id }))
 				)
 				.sort((a, b) => (b?.time ?? 0) - (a?.time ?? 0))
 		},

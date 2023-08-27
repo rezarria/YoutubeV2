@@ -5,9 +5,7 @@ import ifUserNotFoundThenCreate from '@src/task/ifUserNotFoundThenCreate'
 import { StackParamList } from './type'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-export default function LoginScreen(
-	props: NativeStackScreenProps<StackParamList, 'LoginScreen'>
-) {
+export default function LoginScreen(props: NativeStackScreenProps<StackParamList, 'LoginScreen'>) {
 	return (
 		<Box>
 			<Button

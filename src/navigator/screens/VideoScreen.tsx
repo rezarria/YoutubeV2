@@ -1,11 +1,4 @@
-import CommentList from '@components/CommentList'
-import {
-	AvatarPart,
-	Buttons,
-	Title,
-	VideoPart,
-} from '@components/VideoScreenComponents'
-import { CommentsSection } from '@core/components'
+import { AvatarPart, Buttons, Title, VideoPart } from '@components/VideoScreenComponents'
 import { VideoRef } from '@core/components/Video/Video'
 import database from '@react-native-firebase/database'
 import { useFocusEffect } from '@react-navigation/native'
@@ -14,10 +7,9 @@ import useVideoInfo from '@src/hooks/useVideoInfo'
 import { VStack } from 'native-base'
 import { useCallback, useRef } from 'react'
 import { StackParamList } from './type'
+import { CommentsSection } from '@components/VideoScreenComponents/CommetsSection'
 
-export default (
-	props: NativeStackScreenProps<StackParamList, 'VideoScreen'>
-) => {
+export default (props: NativeStackScreenProps<StackParamList, 'VideoScreen'>) => {
 	const data = useVideoInfo(props.route.params.videoId)
 	const videoPartRef = useRef<VideoRef>(null)
 	useFocusEffect(
@@ -54,9 +46,7 @@ export default (
 			/>
 			<Buttons data={data} />
 			<AvatarPart userId={data?.userId} />
-			<CommentsSection>
-				<CommentList videoId={data?.id} />
-			</CommentsSection>
+			<CommentsSection videoId={data?.id} />
 		</VStack>
 	)
 }

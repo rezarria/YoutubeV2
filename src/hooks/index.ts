@@ -5,11 +5,4 @@ import useObserverDislike from './useObserverDislike'
 import useVideoInfo from './useVideoInfo'
 import useObserverComment from './useObserverComment'
 
-export {
-	useUser,
-	useFile,
-	useObserverLike,
-	useObserverDislike,
-	useVideoInfo,
-	useObserverComment,
-}
+export { useUser, useFile, useObserverLike, useObserverDislike, useVideoInfo, useObserverComment }

@@ -1,9 +1,6 @@
 import { ForwardedRef, forwardRef } from 'react'
 
-import {
-	VideoSection as CoreVideoSection,
-	VideoSectionRef as CoreVideoSectionRef,
-} from '@core/components/VideoSection'
+import { VideoSection as CoreVideoSection, VideoSectionRef as CoreVideoSectionRef } from '@core/components/VideoSection'
 import { useFile, useUser } from '@src/hooks'
 import { Video } from '@core/model'
 import { TitlePart } from '@src/navigator/screens'
@@ -19,13 +16,9 @@ export type VideoSectionProps = {
 	data?: Video
 }
 
-function VideoSection(
-	{ data }: VideoSectionProps,
-	ref: ForwardedRef<CoreVideoSectionRef>
-) {
+function VideoSection({ data }: VideoSectionProps, ref: ForwardedRef<CoreVideoSectionRef>) {
 	const videoUri =
-		useFile(data?.videoUri) ??
-		'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+		useFile(data?.videoUri) ?? 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
 	const thumbnailUri = useFile(data?.thumbnailUri)
 	const userInfo = useUser(data?.userId)
 	const avatarUri = userInfo?.avatar

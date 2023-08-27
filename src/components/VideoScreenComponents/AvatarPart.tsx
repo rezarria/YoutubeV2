@@ -1,7 +1,7 @@
 import { HStack, Text, VStack } from 'native-base'
 import { Pressable } from 'react-native'
-import { AvatarSection } from './AvatarSection'
 import { useUser } from '@src/hooks'
+import AvatarSection from './AvatarSection'
 
 export default function AvatarPart(props: { userId?: string }) {
 	const user = useUser(props.userId)
