@@ -53,6 +53,7 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 						poster={props.thumbnailUri}
 						paused={pause}
 						flex={1}
+						resizeMode={'cover'}
 						onProgress={e => {
 							videoProgressRef.current?.set((e.currentTime / e.seekableDuration) * 100)
 							videoTimeRef.current?.setText(timeStyle(e.seekableDuration - e.currentTime))
