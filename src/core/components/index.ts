@@ -1,2 +1,3 @@
 import CommentInput from './CommentInput'
-export { CommentInput }
+import { CommentInputRef } from './CommentInput'
+export { CommentInput, type CommentInputRef }

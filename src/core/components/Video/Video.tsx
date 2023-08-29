@@ -1,7 +1,8 @@
-import { Box, Factory, Pressable, Progress, Text } from 'native-base'
+import { Box, Factory, Pressable, Text } from 'native-base'
 import { default as RNVideo } from 'react-native-video'
 import { Dimensions } from 'react-native'
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react'
+import VideoProgress, { VideoProgressRef } from './VideoProgress'
 
 export type VideoProps = {
 	size?: { width: number; height: number }
@@ -21,6 +22,8 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 	const [pause, setPause] = useState(false)
 	const videoProgressRef = useRef<VideoProgressRef>(null)
 	const videoTimeRef = useRef<VideoTimeRef>(null)
+	const [secondSeek, setSecondSeek] = useState(0)
+	const [duration, setDuration] = useState(0)
 	useImperativeHandle(
 		ref,
 		() => ({
@@ -46,10 +49,15 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 			>
 				<Box flex={1}>
 					<NBRNVideo
+						onLoad={e => {
+							console.debug('lấy thông tin video')
+							setDuration(e.duration)
+						}}
 						muted={false}
 						source={{
 							uri: props.uri,
 						}}
+						seek={secondSeek}
 						poster={props.thumbnailUri}
 						paused={pause}
 						flex={1}
@@ -63,7 +71,12 @@ const Video = forwardRef<VideoRef, VideoProps>(function Video(props, ref) {
 					<VideoTime ref={videoTimeRef} />
 				</Box>
 			</Pressable>
-			<VideoProgress ref={videoProgressRef} />
+			<VideoProgress
+				ref={videoProgressRef}
+				onSeek={v => {
+					setSecondSeek(v * duration)
+				}}
+			/>
 		</Box>
 	)
 })
@@ -106,28 +119,5 @@ const VideoTime = forwardRef<VideoTimeRef>(function VideoTime(props, ref) {
 				{text}
 			</Text>
 		</Box>
-	)
-})
-
-type VideoProgressRef = {
-	set(v: number): void
-}
-
-const VideoProgress = forwardRef<VideoProgressRef>(function VideoProgress(props, ref) {
-	const [progress, setProgress] = useState(0)
-	useImperativeHandle(
-		ref,
-		() => ({
-			set: setProgress,
-		}),
-		[]
-	)
-	return (
-		<Progress
-			height={'3px'}
-			rounded={'0px'}
-			colorScheme={'red'}
-			value={progress}
-		/>
 	)
 })
