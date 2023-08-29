@@ -47,7 +47,7 @@ export default function CommentsSection(props: { children?: ReactNode; videoId?:
 					/>
 				</Svg>
 			</HStack>
-			<CommentInput />
+			<CommentInput videoId={props.videoId} />
 			<FlatList
 				paddingY={'8px'}
 				data={data}

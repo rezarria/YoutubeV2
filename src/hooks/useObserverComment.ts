@@ -1,6 +1,8 @@
 import { CommentType } from '@core/model'
-import database from '@react-native-firebase/database'
-import { useEffect, useRef, useState } from 'react'
+import database, { FirebaseDatabaseTypes } from '@react-native-firebase/database'
+import { Dispatch, MutableRefObject, SetStateAction, useEffect, useRef, useState } from 'react'
+
+const sortByTime = (a: CommentType, b: CommentType) => (b.time ?? 0) - (a.time ?? 0)
 
 export default function useObserverComment(videoId?: string) {
 	const [comments, setComments] = useState<CommentType[]>([])
@@ -13,44 +15,61 @@ export default function useObserverComment(videoId?: string) {
 			ref.once('value', snapshot => {
 				if (snapshot.exists()) {
 					const data = snapshot.toJSON() as { [key: string]: CommentType }
-					const arr = Object.keys(data).map(key => ({ ...data[key], id: key } as CommentType))
-					const timeArr = arr.filter(i => i.time != null).map(i => i.time) as number[]
-					timestamp.current = Math.max(...timeArr)
-					setComments(i => i.concat(arr))
+					const commentArray = Object.keys(data).map(key => ({ ...data[key], id: key } as CommentType))
+					const timeArray = commentArray.filter(i => i.time != null).map(i => i.time) as number[]
+					timestamp.current = Math.max(...timeArray)
+					setComments(previousData => previousData.concat(commentArray).sort(sortByTime))
 				}
-				const handleAdd = ref.on('child_added', _snapshot => {
-					const _data = _snapshot.toJSON() as CommentType
-					if (_data.time && _data.time > timestamp.current) {
-						console.debug('có comment mới')
-						timestamp.current = _data.time
-						setComments(i =>
-							i.concat({
-								..._data,
-								id: _snapshot.key!,
-							})
-						)
-					}
-				})
+				const handleAdded = createHandleAdded(ref, timestamp, setComments)
 
-				const handleRemove = ref.on('child_removed', _snapshot => {
-					setComments(i => i.filter(x => x.id !== _snapshot.key))
-				})
-				const handleUpdate = ref.on('child_changed', _snapshot => {
-					const deleteComment = _snapshot.toJSON() as CommentType
-					setComments(i =>
-						i
-							.filter(x => x.id !== _snapshot.key)
-							.concat({ ...deleteComment, id: _snapshot.key! })
-							.sort((a, b) => (b.time ?? 0) - (a.time ?? 0))
-					)
-				})
+				const handleDeleted = createHandleDeleted(ref, setComments)
+				const handleChanged = createHandleChanged(ref, setComments)
 				return () => {
-					ref.off('child_changed', handleUpdate)
-					ref.off('child_added', handleAdd)
-					ref.off('child_removed', handleRemove)
+					ref.off('child_changed', handleChanged)
+					ref.off('child_added', handleAdded)
+					ref.off('child_removed', handleDeleted)
 				}
 			})
 		}
 	}, [videoId])
 	return comments
+}
+function createHandleChanged(ref: FirebaseDatabaseTypes.Query, setComments: Dispatch<SetStateAction<CommentType[]>>) {
+	return ref.on('child_changed', snapshot => {
+		const deleteComment = snapshot.toJSON() as CommentType
+		setComments(previousData =>
+			previousData
+				.filter(item => item.id !== snapshot.key)
+				.concat({ ...deleteComment, id: snapshot.key! })
+				.sort(sortByTime)
+		)
+	})
+}
+
+function createHandleDeleted(ref: FirebaseDatabaseTypes.Query, setComments: Dispatch<SetStateAction<CommentType[]>>) {
+	return ref.on('child_removed', snapshot => {
+		setComments(previousData => previousData.filter(item => item.id !== snapshot.key))
+	})
+}
+
+function createHandleAdded(
+	ref: FirebaseDatabaseTypes.Query,
+	timestamp: MutableRefObject<number>,
+	setComments: Dispatch<SetStateAction<CommentType[]>>
+) {
+	return ref.on('child_added', snapshot => {
+		const data = snapshot.toJSON() as CommentType
+		if (data.time && data.time > timestamp.current) {
+			console.debug('có comment mới')
+			timestamp.current = data.time
+			setComments(previousData =>
+				previousData
+					.concat({
+						...data,
+						id: snapshot.key!,
+					})
+					.sort(sortByTime)
+			)
+		}
+	})
 }
