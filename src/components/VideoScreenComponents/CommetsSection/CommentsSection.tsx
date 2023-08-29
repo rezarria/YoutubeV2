@@ -51,6 +51,7 @@ export default function CommentsSection(props: { children?: ReactNode; videoId?:
 			<FlatList
 				paddingY={'8px'}
 				data={data}
+				scrollEnabled={false}
 				renderItem={({ item }) => <Comment comment={item} />}
 				keyExtractor={i => i.id!}
 				flex={1}
