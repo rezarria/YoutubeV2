@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import CommentCount from './CommentCount'
 import Comment from './Comment'
 import Svg, { Path } from 'react-native-svg'
+import { CommentInput } from '@components/VideoScreenComponents'
 
 export default function CommentsSection(props: { children?: ReactNode; videoId?: string }) {
 	const data = useObserverComment(props.videoId)
@@ -11,7 +12,9 @@ export default function CommentsSection(props: { children?: ReactNode; videoId?:
 		<VStack
 			padding={'12px'}
 			borderTopWidth={'1px'}
+			flex={1}
 			borderTopColor={'#cecece'}
+			space={'6px'}
 		>
 			<HStack justifyContent={'space-between'}>
 				<Text
@@ -44,11 +47,13 @@ export default function CommentsSection(props: { children?: ReactNode; videoId?:
 					/>
 				</Svg>
 			</HStack>
+			<CommentInput />
 			<FlatList
 				paddingY={'8px'}
 				data={data}
 				renderItem={({ item }) => <Comment comment={item} />}
 				keyExtractor={i => i.id!}
+				flex={1}
 			/>
 		</VStack>
 	)
