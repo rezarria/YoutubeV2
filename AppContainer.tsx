@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { NativeBaseProvider } from 'native-base'
+import { KeyboardAvoidingView, NativeBaseProvider } from 'native-base'
 import { SafeAreaView } from 'react-native'
 import CustomTheme from './src/theme'
 import AppStyle from './src/AppStyle'
@@ -12,7 +12,9 @@ export function AppContainer(props: { children: ReactNode }) {
 		<Provider store={store}>
 			<NativeBaseProvider theme={CustomTheme}>
 				<SafeAreaView style={AppStyle.expand}>
-					<NavigationContainer>{props.children}</NavigationContainer>
+					<KeyboardAvoidingView flex={1}>
+						<NavigationContainer>{props.children}</NavigationContainer>
+					</KeyboardAvoidingView>
 				</SafeAreaView>
 			</NativeBaseProvider>
 		</Provider>
